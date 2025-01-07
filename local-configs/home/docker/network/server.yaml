@@ -1,0 +1,22 @@
+#!/bin/bash
+
+################################################################################
+#
+#  Name:           Docker Network 
+#  Version:        1.0.0.20250106
+#  Description:    A bash script to create a Docker macvlan network for server
+#                  containers
+#
+#  Author:         SchmittyD
+#  Created:        06/01/2025 (AEST)
+#  Updated:        06/01/2025	(AEST)
+#  Github:         https://github.com/dzlhub/docker-config
+#  Email:          email
+#  Website:        https://dev.dzlhub.xyz
+#  Twitter:        https://twitter.com/profile
+#
+################################################################################
+
+
+# Creates a new Docker macvlan network for server containers
+docker network create -d macvlan --subnet=192.168.20.0/24 --gateway=192.168.20.1 --attachable -o parent=enp6s0 docker_network_server

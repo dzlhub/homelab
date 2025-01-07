@@ -1,0 +1,19 @@
+networks:
+  proxiable:
+    name: proxiable
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginxproxymanager
+    restart: unless-stopped
+    volumes:
+      - backend_config/nginxproxymanager:/data
+      - backend_config/letsencrypt:/etc/letsencrypt
+      - localtime:/etc/localtime
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    networks:
+      - proxiable
